@@ -4,14 +4,17 @@ on:
 
 jobs:
     build:
+        defaults:
+            run:
+                working-directory: ./04-using-actions/react-app
+
         runs-on: ubuntu-latest
         steps:
             - name: Checkout Code
               uses: actions/checkout@v7
               with:
-                repository: ${{ github.repository }}
-                ref: "main"
-            
+                    repository: ${{ github.repository }}
+                    ref: "main"  
                 
             - name: Setup node
               uses: actions/setup-node@v6
@@ -19,13 +22,11 @@ jobs:
                 node-version: '24.x'
             
             - name: Install Dependencies
-              working-directory: ./04-using-actions/react-app
               run: |
                 echo "Installing dependencies"
                 npm ci
             
             - name: Run Unit Tests
-              working-directory: ./04-using-actions/react-app
               run: |
                 echo "Running unit tests"
                 npm run test
