@@ -1,0 +1,17 @@
+name: 05 - 1 - Event Filters and Activity Types
+on:
+    pull_request:
+        types: [opened, synchronize]
+        branches: "main"
+    workflow_dispatch:
+        
+jobs:
+    echo:
+        runs-on: ubuntu-latest
+        steps:
+            - name: echo
+              run: |
+                echo "Running when a PR is raised to main branch"
+                echo "Base branch : ${{ github.base_ref }}"
+                echo "Ref branch : ${{ github.head_ref }} "
+
