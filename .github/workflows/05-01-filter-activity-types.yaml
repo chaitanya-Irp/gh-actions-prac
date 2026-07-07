@@ -13,7 +13,7 @@ jobs:
                 BRANCH="${{ github.head_ref }}"
                 echo "Source branch : $BRANCH"
 
-                if [[ "$BRANCH" != version/*]]; then
+                if [[ "$BRANCH" != version/* ]]; then
                    echo "Pull requests to  main should come from version/*"
                    exit 1
                 fi
