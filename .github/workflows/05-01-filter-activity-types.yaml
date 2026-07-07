@@ -3,15 +3,17 @@ on:
     pull_request:
         types: [opened, synchronize]
         branches: "main"
-    workflow_dispatch:
         
 jobs:
-    echo:
+    validate:
         runs-on: ubuntu-latest
         steps:
-            - name: echo
+            - name: Checking branch name
               run: |
-                echo "Running when a PR is raised to main branch"
-                echo "Base branch : ${{ github.base_ref }}"
-                echo "Ref branch : ${{ github.head_ref }} "
+                BRANCH = "${{ github.head_ref }}"
+                echo "Source branch : $BRANCH"
 
+                if [[ "$BRANCH" != version/*]]; then
+                   echo "Pull requests to  main should come from version/*"
+                   exit 1
+                fi
