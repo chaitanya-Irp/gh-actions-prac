@@ -10,7 +10,7 @@ jobs:
         steps:
             - name: Checking branch name
               run: |
-                BRANCH = "${{ github.head_ref }}"
+                BRANCH="${{ github.head_ref }}"
                 echo "Source branch : $BRANCH"
 
                 if [[ "$BRANCH" != version/*]]; then
