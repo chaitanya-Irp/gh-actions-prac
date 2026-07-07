@@ -13,8 +13,19 @@ jobs:
                 ref: "main"
             
                 
-            - name: Printing folders
-              working-directory: ./04-using-actions/react-app 
+            - name: Setup node
+              uses: actions/setup-node@v6
+              with:
+                node-version: '24.x'
+            
+            - name: Install Dependencies
+              working-directory: ./04-using-actions/react-app
               run: |
-                echo "Printing all the folders"
-                ls
+                echo "Installing dependencies"
+                npm ci
+            
+            - name: Run Unit Tests
+              working-directory: ./04-using-actions/react-app
+              run: |
+                echo "Running unit tests"
+                npm run test
