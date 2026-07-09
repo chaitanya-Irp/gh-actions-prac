@@ -7,11 +7,16 @@ on:
                 type: boolean
                 default: false     
 run-name: "My custom workflow run name | DEBUG - ${{ inputs.debug }}"
-
+env:
+    MY_WORKFLOW_VAR: "workflow"
+    MY_OVERWRITTEN_VAR: "workflow"
 
 jobs:
     echo-data:
         runs-on: ubuntu-latest
+        env:
+            MY_JOB_VAR: "Job"
+            MY_OVERWRITTEN_VAR: "Job"
         steps:
             - name: Display Information
               run: |
@@ -30,3 +35,17 @@ jobs:
                 echo "My secret : ${{ secrets.AH_SECRET }}"
                 MY_SECRET="${{ secrets.AH_SECRET }}"
                 echo "Printing: $MY_SECRET"
+            
+            - name: Retrieve variables
+              env:
+                MY_STEP_VAR: "Step"
+                MY_OVERWRITTEN_VAR: "Step"
+              run: |
+                echo "MY_WORKFLOW_VAR: ${{env.MY_WORKFLOW_VAR }}"
+                echo "MY_JOB_VAR: ${{ env.MY_JOB_VAR }}"
+                echo "MY_STEP_VAR: ${{ env.MY_STEP_VAR }}"
+                echo "MY_OVERWRITTEN_VAR : ${{ env.MY_OVERWRITTEN_VAR }}"
+
+            - name: Retreive variables 2
+              run: |
+                echo "MY_OVERWRITTEN_VAR: ${{ env.MY_OVERWRITTEN_VAR }}"
