@@ -22,5 +22,5 @@ jobs:
 
                 echo "Accessing secrets : "
                 echo "My secret : ${{ secrets.AH_SECRET }}"
-                $MY_SECRET = ${{ secrets.AH_SECRET }}
+                $MY_SECRET=${{ secrets.AH_SECRET }}
                 echo "Printing: $MY_SECRET"
