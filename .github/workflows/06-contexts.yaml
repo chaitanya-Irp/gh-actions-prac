@@ -2,7 +2,7 @@ name: 06 - Contexts
 on:
     push:
     workflow_dispatch:
-run-name: "My custom workflow name - ${RUNNER_OS}"
+run-name: "My custom workflow name - ${{ runner.os }}"
 
 
 jobs:
@@ -20,7 +20,7 @@ jobs:
             - name: Retrieve Variables
               run: |
                 echo "Printing variable names: "
-                echo "My variable: ${AH_MSG}"
+                echo "My variable: ${{ vars.AH_MSG}}"
 
                 echo "Accessing secrets : "
                 echo "My secret : ${{ secrets.AH_SECRET }}"
