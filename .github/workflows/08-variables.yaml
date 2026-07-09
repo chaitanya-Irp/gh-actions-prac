@@ -48,8 +48,8 @@ jobs:
         - name: Prinitng prod variables
           run: |
             echo "Repo var: ${{ vars.REPOSITORY_VAR }}"
-            echo "Env var: ${{ env.TARGET_VAR }}"
-            echo "Env overwritten: ${{ env.OVERWRITTEN_VAR }}"
+            echo "Env var: ${{ vars.TARGET_VAR }}"
+            echo "Env overwritten: ${{ vars.OVERWRITTEN_VAR }}"
     
     echo-stage:
         runs-on: ubuntu-latest
@@ -58,8 +58,8 @@ jobs:
           - name: Printing stage
             run: |
               echo "Repo var: ${{ vars.REPOSITORY_VAR }}"
-              echo "Env var: ${{ env.TARGET_VAR }}"
-              echo "Env overwritten: ${{ env.OVERWRITTEN_VAR }}"
+              echo "Env var: ${{ vars.TARGET_VAR }}"
+              echo "Env overwritten: ${{ vars.OVERWRITTEN_VAR }}"
 
     echo-undefined:
         runs-on: ubuntu-latest
